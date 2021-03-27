@@ -7,14 +7,13 @@ from base import *
 pygame.init()
 pygame.display.set_caption("Flappy Bird")
 base = Base()
-pipe = Pipe()
 
 def generate_pipes():
     tes =0
 
 def game_loop():
     generate_pipes()
-    
+
 def draw_window():
     SCREEN.blit(BG_SURFACE,(0,0))
     base.draw()
