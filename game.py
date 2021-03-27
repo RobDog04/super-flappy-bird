@@ -18,6 +18,7 @@ while True:
                 pygame.quit()
                 sys.exit()
         SCREEN.blit(BG_SURFACE,(0,0))
+        SCREEN.blit(PIPE_SURFACE,PIPE_BOUNDARY)
         FLOOR_X_POS -= 1
         draw_floor()
         if FLOOR_X_POS <= -576:
