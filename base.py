@@ -1,7 +1,7 @@
 from constants import *
 
 class Base:
-    tick_count = 0;
+    tick_count = 0
 
     def draw(self):
         self.tick_count -= VEL
