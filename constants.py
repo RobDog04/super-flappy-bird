@@ -18,4 +18,5 @@ BASE_SURFACE = pygame.transform.scale(BASE_SURFACE,(WIDTH, 200))
 PIPE_WIDTH = 75
 PIPE_SURFACE = pygame.image.load("assets/pipe.png").convert()
 
+GENERATE_PIPE = pygame.USEREVENT
 GAME_OVER = pygame.USEREVENT + 1

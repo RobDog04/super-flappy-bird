@@ -7,9 +7,10 @@ from base import *
 pygame.init()
 pygame.display.set_caption("Flappy Bird")
 base = Base()
-
+pipe = []
 def generate_pipes():
     tes =0
+    pipe.append(Pipe((100,400)))
 
 def game_loop():
     generate_pipes()
