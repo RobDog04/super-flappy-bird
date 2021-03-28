@@ -9,8 +9,10 @@ pygame.display.set_caption("Flappy Bird")
 base = Base()
 pipe = []
 def generate_pipes():
-    tes =0
-    pipe.append(Pipe((100,400)))
+    #tes =0
+    myPipe = Pipe(100,400)
+    myPipe.draw()
+    pipe.append(myPipe)
 
 def game_loop():
     generate_pipes()
@@ -27,7 +29,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT or event.type == GAME_OVER:
                 run = False
-        # game_loop()
+        game_loop()
         draw_window()
 
     pygame.quit()
