@@ -16,7 +16,7 @@ BASE_SURFACE = pygame.image.load("assets/base.png").convert()
 BASE_SURFACE = pygame.transform.scale(BASE_SURFACE,(WIDTH, 200))
 
 PIPE_WIDTH = 50
-PIPE_HEIGHT = 300
+PIPE_HEIGHT = 500
 PIPE_SURFACE = pygame.image.load("assets/pipe.png").convert()
 PIPE_SURFACE = pygame.transform.scale(PIPE_SURFACE,(PIPE_WIDTH, PIPE_HEIGHT))
 

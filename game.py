@@ -43,8 +43,9 @@ def main(BIRD_Y_CHANGE, BIRD_INDEX):
                 BIRD_INDEX = (BIRD_INDEX + 1) % 2
             
             if event.type == GENERATE_PIPE:
-                pipelist.append(pipeobj.create_pipe())
+                pipelist.extend(pipeobj.create_pipe())
                 pipeobj.movelist(pipelist)
+                print(pipelist)
                 
                 
                 
