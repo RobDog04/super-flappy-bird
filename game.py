@@ -7,29 +7,33 @@ from base import *
 pygame.init()
 pygame.display.set_caption("Flappy Bird")
 base = Base()
-pipe = []
-def generate_pipes():
-    tes =0
-    pipe.append(Pipe((100,400)))
+pipeobj = Pipe()
+
+
+GENERATE_PIPE = pygame.USEREVENT
+pygame.time.set_timer(GENERATE_PIPE,1200)
+
 
 def game_loop():
-    generate_pipes()
-
-def draw_window():
+    tes=0
+def draw_window(pipe):
     SCREEN.blit(BG_SURFACE,(0,0))
     base.draw()
-    pygame.display.update()
+    pipeobj.draw_pipe(pipe)
 
+    
 def main():
+    pipe = []
     run = True
     while run:
         CLOCK.tick(FPS)
         for event in pygame.event.get():
             if event.type == pygame.QUIT or event.type == GAME_OVER:
                 run = False
+            draw_window()
+            pygame.display.update()
         # game_loop()
-        draw_window()
-
+        
+    
     pygame.quit()
-
 main()
