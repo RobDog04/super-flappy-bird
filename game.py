@@ -7,25 +7,28 @@ pygame.init()
 pygame.display.set_caption("Flappy Bird")
 base = Base()
 pipeobj = Pipe()
+birdobj = Bird()
 GENERATE_PIPE = pygame.USEREVENT # For generating pipes
 pygame.time.set_timer(GENERATE_PIPE,3000)
+pipelist = []
+
 
 def generate_pipes():
     tes=0
 
+
 def game_loop():
     tes1=0
 
-def draw_window():
+
+def draw_window(bird):
     SCREEN.blit(BG_SURFACE,(0,0))
     pipeobj.draw_pipe(pipelist)
+    birdobj.draw_bird(bird, BIRD_BOUNDARY)
     base.draw()
-    
-    
-    
-pipelist = []
 
-def main(BIRD_Y_CHANGE, BIRD_INDEX):
+
+def main(change, boundary):
     run = True
     while run:
         
@@ -35,32 +38,19 @@ def main(BIRD_Y_CHANGE, BIRD_INDEX):
                 run = False
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
-                    #bird_jump()
-                    BIRD_Y_CHANGE = 0
-                    BIRD_Y_CHANGE -= 7.5
-            if event.type == BIRD_FLAP:
-                print("here")
-                BIRD_INDEX = (BIRD_INDEX + 1) % 2
-            
+                    change = birdobj.jump_bird(change)
             if event.type == GENERATE_PIPE:
                 pipelist.extend(pipeobj.create_pipe())
                 pipeobj.movelist(pipelist)
                 print(pipelist)
-                
-                
-                
-                 
-               
+
         game_loop()
-        draw_window()
+        bird = birdobj.animate_bird(BIRD_SURFACE, change)
+        draw_window(bird)
         pygame.display.update()
-        #BIRD_MOVE = bird_fall(BIRD_Y_CHANGE)
-        BIRD_Y_CHANGE += 0.25
-        BIRD = animated_bird(BIRD_SURFACE, BIRD_Y_CHANGE)
-        BIRD_BOUNDARY.centery += BIRD_Y_CHANGE
-        draw_bird(BIRD, BIRD_BOUNDARY)
-        
-        
+        change, boundary = birdobj.bird_fall(change, boundary)
+
     pygame.quit()
 
-main(BIRD_Y_CHANGE, BIRD_INDEX)
+
+main(BIRD_Y_CHANGE, BIRD_BOUNDARY)
