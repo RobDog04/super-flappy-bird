@@ -14,9 +14,10 @@ def generate_pipes():
     if len(pipelist) == 0:
         for i in range (1, 5):
             pipelist.append(Pipe(WIDTH + i*PIPE_SPACING))
-    if pipelist[0].x_loc <= 0:
+    if pipelist[0].x_loc <= -PIPE_WIDTH/2:
+        
+        pipelist.append(Pipe(WIDTH + PIPE_SPACING + pipelist[0].x_loc))
         pipelist.pop(0)
-        pipelist.append(Pipe(WIDTH + PIPE_SPACING))
 
 def game_loop():
     generate_pipes()
@@ -46,10 +47,6 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     birdObj.jump_bird()
-            # if event.type == GENERATE_PIPE:
-            #     pipelist.extend(pipeobj.create_pipe())
-            #     pipeobj.movelist(pipelist)
-            #     # print(pipelist)
         game_loop()
 
     pygame.quit()

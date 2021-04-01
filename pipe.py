@@ -4,7 +4,7 @@ class Pipe:
 
     def __init__(self, x):
         self.x_loc = x
-        self.gap_loc = random.randrange(200, 600)
+        self.gap_loc = random.randrange(200, 700)
         self.bot_pipe_surface = pygame.transform.scale(PIPE_SURFACE,(PIPE_WIDTH, FLOOR - self.gap_loc))
         self.top_pipe_surface = pygame.transform.scale(PIPE_SURFACE,(PIPE_WIDTH, self.gap_loc - PIPE_GAP))
 

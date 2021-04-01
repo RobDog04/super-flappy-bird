@@ -8,7 +8,7 @@ class Bird:
     boundary = BIRD_SURFACE.get_rect(center=(150,500))
 
     def animate_bird(self):
-        rotoBird = pygame.transform.rotozoom(BIRD_SURFACE, -self.falling_vel * 5, 1)
+        rotoBird = pygame.transform.rotozoom(BIRD_SURFACE, max(-self.falling_vel * 5, -70), 1)
         return rotoBird
 
     def draw_bird(self):
@@ -21,5 +21,5 @@ class Bird:
         self.boundary.centery += self.falling_vel
 
     def jump_bird(self):
-        self.falling_vel = -7.5
+        self.falling_vel = JUMP_HEIGHT
 
