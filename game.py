@@ -6,17 +6,22 @@ from pipe import *
 pygame.init()
 pygame.display.set_caption("Flappy Bird")
 base = Base()
-pipeobj = Pipe()
 birdObj = Bird()
-pygame.time.set_timer(GENERATE_PIPE,3000)
 pipelist = []
 
 
 def generate_pipes():
-    tes=0
-
+    if len(pipelist) == 0:
+        for i in range (1, 5):
+            pipelist.append(Pipe(WIDTH + i*PIPE_SPACING))
+    if pipelist[0].x_loc <= 0:
+        pipelist.pop(0)
+        pipelist.append(Pipe(WIDTH + PIPE_SPACING))
 
 def game_loop():
+    generate_pipes()
+    for pipe in pipelist:
+        pipe.move()
     birdObj.bird_fall()
     draw_window()
     pygame.display.update()
@@ -24,7 +29,8 @@ def game_loop():
 
 def draw_window():
     SCREEN.blit(BG_SURFACE,(0,0))
-    pipeobj.draw_pipe(pipelist)
+    for pipe in pipelist:
+        pipe.draw_pipe()
     birdObj.draw_bird()
     base.draw()
 
@@ -40,10 +46,10 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     birdObj.jump_bird()
-            if event.type == GENERATE_PIPE:
-                pipelist.extend(pipeobj.create_pipe())
-                pipeobj.movelist(pipelist)
-                # print(pipelist)
+            # if event.type == GENERATE_PIPE:
+            #     pipelist.extend(pipeobj.create_pipe())
+            #     pipeobj.movelist(pipelist)
+            #     # print(pipelist)
         game_loop()
 
     pygame.quit()
