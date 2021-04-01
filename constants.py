@@ -3,12 +3,12 @@ import pygame
 #global constants
 CLOCK = pygame.time.Clock()
 FPS = 30
-VEL = 4
+VEL = 10
 GAME_OVER = pygame.USEREVENT + 1
 
 #window constants
 WIDTH, HEIGHT = 600, 900
-SCREEN_DIM = (WIDTH, HEIGHT)
+SCREEN_DIM = (600, HEIGHT)
 SCREEN = pygame.display.set_mode (SCREEN_DIM)
 
 #background constants
