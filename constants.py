@@ -19,17 +19,18 @@ PIPE_WIDTH = 50
 PIPE_HEIGHT = 500
 PIPE_SURFACE = pygame.image.load("assets/pipe.png").convert()
 PIPE_SURFACE = pygame.transform.scale(PIPE_SURFACE,(PIPE_WIDTH, PIPE_HEIGHT))
+GENERATE_PIPE = pygame.USEREVENT + 2 # For generating pipes
 
         
 
 GAME_OVER = pygame.USEREVENT + 1
 
 
+
 # Bird Constants
 BIRD_WIDTH = BIRD_HEIGHT = 50
-BIRD_X = 50
-BIRD_Y = int ( 576/2 - BIRD_HEIGHT/2 )
-BIRD_IMAGE = pygame.image.load("assets/bird1.png").convert_alpha()
-BIRD_SURFACE = BIRD_IMAGE
-BIRD_BOUNDARY = BIRD_SURFACE.get_rect(center=(150,500))
-BIRD_Y_CHANGE = 0
+# BIRD_X = 50
+# BIRD_Y = int ( 576/2 - BIRD_HEIGHT/2 )
+BIRD_SURFACE = pygame.image.load("assets/bird1.png").convert_alpha()
+FALLING_ACC = 0.5
+# BIRD_Y_CHANGE = 0
